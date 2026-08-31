@@ -77,10 +77,11 @@ def og_card(name, icon_b64, title, line, accent, w=1200, h=630):
 """
 
 
-def site_card(icons, labels, w=1200, h=630):
+def site_card(icon_sources, labels, w=1200, h=630):
     tiles = ''.join(
-        f'<span style="background-image:url(data:image/png;base64,{b})"></span>' if b
-        else f'<span class="mono">{label}</span>' for b, label in zip(icons, labels))
+        f'<span style="background-image:url({source})"></span>' if source
+        else f'<span class="mono">{label}</span>'
+        for source, label in zip(icon_sources, labels))
     return f"""<!doctype html><meta charset="utf-8"><style>{FONTS}{BASE % {'w': w, 'h': h}}
   body{{--accent:#A78BFA;padding:82px 84px;display:flex;flex-direction:column;
         justify-content:space-between}}
@@ -130,11 +131,28 @@ if __name__ == '__main__':
         p = ROOT / slug / 'assets/app-icon.png'
         icons[slug] = b64(p) if p.exists() else None
 
+    site_icon_paths = {
+        'rouse': ROOT / 'assets/apps/rouse.png',
+        'lull': ROOT / 'assets/apps/lull.png',
+        'skyhop': ROOT / 'assets/apps/skyhop.png',
+        'attune': ROOT / 'assets/apps/attune.svg',
+    }
+    site_icons = {
+        slug: f'data:{"image/svg+xml" if path.suffix.lower() == ".svg" else "image/png"};base64,{b64(path)}'
+        if path.exists() else None
+        for slug, path in site_icon_paths.items()
+    }
+
     (ROOT / 'assets/og').mkdir(parents=True, exist_ok=True)
     print('OG cards:')
     site_slugs = ['spacesift', 'respirix', 'promptuary', 'rouse', 'lull', 'skyhop', 'pacingguard', 'attune']
     site_labels = ['S', 'R', 'Pr', 'R', 'L', 'S', 'P', 'A']
-    shot('og-site', site_card([icons.get(s) for s in site_slugs], site_labels), 1200, 630,
+    legacy_site_icons = {
+        slug: f'data:image/png;base64,{icon}' if icon else None
+        for slug, icon in icons.items()
+    }
+    site_sources = {**legacy_site_icons, **site_icons}
+    shot('og-site', site_card([site_sources.get(s) for s in site_slugs], site_labels), 1200, 630,
          ROOT / 'assets/og/kstech.png')
     for slug, title, line, accent in APPS:
         shot(f'og-{slug}', og_card(slug, icons[slug], title, line, accent), 1200, 630,

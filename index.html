@@ -22,8 +22,9 @@
   1. Lull's accent below is the one unverified color. Every other
      accent is the app's own dark-mode --accent, read from its
      live stylesheet.
-  2. Icons live in <app>/assets/app-icon.png. Regenerate the OG cards
-     and favicon with: python3 scripts/gen-assets.py
+  2. Legacy app-page icons live in <app>/assets/app-icon.png. Portfolio-only
+     logos for the separately hosted apps live in /assets/apps/. Regenerate
+     the OG cards and favicon with: python3 scripts/gen-assets.py
 ============================================================ -->
 
 <link rel="preload" href="/assets/fonts/fraunces-latin-63f165.woff2" as="font" type="font/woff2" crossorigin>
@@ -306,7 +307,7 @@
     </li>
 
     <li class="row" style="--accent:#FF7A45"> <!-- rouseapp.pages.dev --sunrise -->
-      <span class="tile" style="view-transition-name:icon-rouse" aria-hidden="true">R</span>
+      <span class="tile" style="view-transition-name:icon-rouse" aria-hidden="true">R<img src="/assets/apps/rouse.png" alt="" onerror="this.remove()"></span>
       <div>
         <a class="main" href="https://rouseapp.pages.dev/"><h2>Rouse</h2></a>
         <p class="desc">An iPhone alarm for heavy sleepers. Silence the sound if you need to, but the mission remains due.</p>
@@ -318,8 +319,8 @@
       <span class="go" aria-hidden="true">→</span>
     </li>
 
-    <li class="row" style="--accent:#C8925B"> <!-- placeholder accent: Lull's site not located -->
-      <span class="tile" style="view-transition-name:icon-lull" aria-hidden="true">L</span>
+    <li class="row" style="--accent:#C8925B"> <!-- lull-website.pages.dev; accent still to verify -->
+      <span class="tile" style="view-transition-name:icon-lull" aria-hidden="true">L<img src="/assets/apps/lull.png" alt="" onerror="this.remove()"></span>
       <div>
         <a class="main" href="https://lull-website.pages.dev/"><h2>Lull</h2></a>
         <p class="desc">White noise, nature sounds and ambient mixes that play all night. For sleep, babies, calm and focus.</p>
@@ -332,7 +333,7 @@
     </li>
 
     <li class="row" style="--accent:#7BFFB3"> <!-- skyhop-a7j.pages.dev --accent -->
-      <span class="tile" style="view-transition-name:icon-skyhop" aria-hidden="true">S</span>
+      <span class="tile" style="view-transition-name:icon-skyhop" aria-hidden="true">S<img src="/assets/apps/skyhop.png" alt="" onerror="this.remove()"></span>
       <div>
         <a class="main" href="https://skyhop-a7j.pages.dev/"><h2>SkyHop</h2></a>
         <p class="desc">Steer Lumen through an endless climb, chain floor-skipping hops, collect boosters and take on the daily challenge.</p>
@@ -360,7 +361,7 @@
     </li>
 
     <li class="row" style="--accent:#E8674C"> <!-- attune-ev8.pages.dev --coral -->
-      <span class="tile" style="view-transition-name:icon-attune" aria-hidden="true">A</span>
+      <span class="tile" style="view-transition-name:icon-attune" aria-hidden="true">A<img src="/assets/apps/attune.svg" alt="" onerror="this.remove()"></span>
       <div>
         <a class="main" href="https://attune-ev8.pages.dev/"><h2>Attune</h2></a>
         <p class="desc">Paced breathing with live heart-rhythm feedback, designed for iPhone. Start with the pacer or connect a compatible monitor.</p>
