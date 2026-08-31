@@ -20,6 +20,7 @@ to those eight app sites.
 /assets/fonts.css       Self-hosted @font-face rules
 /assets/fonts/          woff2 files, latin + latin-ext
 /assets/squircle.svg    Superellipse mask used for every icon tile
+/assets/apps/            Portfolio logos for separately hosted apps
 /assets/og/             Social cards, one per app plus the site card
 /scripts/gen-assets.py  Rebuilds the OG cards and the favicon
 /scripts/migrate.sh     Old porting helper, read the warning in §1 before running
@@ -58,7 +59,7 @@ wording you already wrote. Nothing about a feature was invented here.
 | index.html and support/ | eight direct Pages URLs | keep these URLs aligned with the live Pages projects |
 | Lull's accent | `#C8925B` on `lull/index.html` and row 3 of index.html | the real one. Every other accent is the app's own dark-mode `--accent`, read from its live stylesheet |
 | Lull | no App Store link | the live Lull site's badge points to placeholder ID `id000000000`. Set the real ID on the Lull page and in index.html |
-| Lull | tile shows the `L` monogram | add `lull/assets/app-icon.png`. The other four icons came from App Store artwork on 2026-07-25 |
+| portfolio-only app tiles | Rouse, Lull, SkyHop and Attune used monograms | logos now live in `assets/apps/` |
 | every page | name `Kstech` | change if you brand differently |
 
 After changing an icon, an accent or a card line, rerun the asset build:

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-100 82 1220 1220" role="img" aria-labelledby="attune-hero-title">
+  <title id="attune-hero-title">Attune's coral and warm-white wave mark</title>
+  <rect x="-100" y="82" width="1220" height="1220" fill="#0C0A07"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M190 355 H360 C470 355 520 420 590 480 C650 532 708 545 830 545" stroke="#E8674C" stroke-width="92"/>
+    <path d="M190 505 H320 C430 505 480 570 550 630 C610 682 678 695 830 695" stroke="#F0EBE1" stroke-width="92"/>
+  </g>
+</svg>
