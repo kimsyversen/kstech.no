@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lull · Kstech</title>
+<meta name="description" content="Lull plays white noise, nature sounds and ambient mixes all night, for sleep, babies, calm and focus.">
+<meta name="theme-color" content="#0F0D0B">
+<meta property="og:title" content="Lull">
+<meta property="og:description" content="White noise, nature sounds and ambient mixes that play all night.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://kstech.no/assets/og/lull.png">
+<meta property="og:url" content="https://kstech.no/lull/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/app.css">
+
+<!-- ============================================================
+  INCOMPLETE ON PURPOSE. Lull is the one app whose live site could
+  not be located (lull.app is a parked domain that is not yours),
+  so nothing here is invented. Still needed:
+    1. App Store ID, to replace the disabled button below
+    2. lull/assets/app-icon.png, so the tile stops showing "L"
+    3. The real brand accent, to replace #C8925B on <body>
+    4. A "What it does" section, matching the other four app pages
+  Once the ID is known, `python3 scripts/gen-assets.py` will pull the
+  icon and rebuild this page's OG card automatically.
+============================================================ -->
+</head>
+<body style="--accent:#C8925B">
+
+<div class="ambient" aria-hidden="true"></div>
+<div class="wrap">
+
+  <header class="top">
+    <a href="/">Kstech</a>
+    <nav>
+      <a href="/support/">Support</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="id">
+      <span class="icon" style="view-transition-name:icon-lull" aria-hidden="true">L</span>
+      <h1>Lull</h1>
+    </div>
+    <p class="tagline">Sound that stays with you all night.</p>
+    <p class="lede">
+      White noise, nature sounds and ambient mixes for sleep, babies, calm and focus.
+      Set it going and it keeps playing.
+    </p>
+    <p class="facts">
+      <span>iPhone</span><span class="sep">·</span>
+      <span>Free</span><span class="sep">·</span>
+      <span>$5.99 lifetime unlock</span>
+    </p>
+    <span class="cta pending">App Store link: set live ID</span>
+  </section>
+
+  <footer>
+    <a href="/">All apps</a>
+    <a href="/support/">Support and privacy</a>
+    <span>© 2026 Kstech</span>
+  </footer>
+
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Lull",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "iOS"
+}
+</script>
+</body>
+</html>
