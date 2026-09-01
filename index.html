@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kstech</title>
-<meta name="description" content="Kstech builds small, focused software. Currently SpaceSift, Respirix, Promptuary, Rouse, Lull, SkyHop, Pacing Guard and Attune for iPhone, iPad and Mac.">
-<meta name="theme-color" content="#0F0D0B">
+<meta name="description" content="Apps from Kstech: SpaceSift, Respirix, Promptuary, Rouse, Lull, SkyHop, Pacing Guard and Attune.">
+<meta name="theme-color" content="#0B0A09">
 <meta property="og:title" content="Kstech">
-<meta property="og:description" content="Kstech builds small, focused software. Eight apps for iPhone, iPad and Mac.">
+<meta property="og:description" content="SpaceSift, Respirix, Promptuary, Rouse, Lull, SkyHop, Pacing Guard and Attune.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://kstech.no/assets/og/kstech.png">
 <meta property="og:url" content="https://kstech.no/">
@@ -33,11 +33,11 @@
 
 <style>
   :root{
-    --ink:#0F0D0B;        /* warm near-black page ground */
-    --card:#161311;       /* row surface */
-    --line:#26221E;       /* hairlines */
-    --bone:#EAE5DB;       /* primary text */
-    --mist:#938C82;       /* secondary text */
+    --ink:#0B0A09;        /* warm near-black page ground */
+    --card:#151311;       /* app surface */
+    --line:#2A2622;       /* hairlines */
+    --bone:#F1ECE2;       /* primary text */
+    --mist:#9A9287;       /* secondary text */
     --serif:"Fraunces", Georgia, "Times New Roman", serif;
     --sans:"Instrument Sans", system-ui, -apple-system, sans-serif;
     --mono:"Spline Sans Mono", ui-monospace, "SF Mono", Menlo, monospace;
@@ -48,7 +48,10 @@
   *{ box-sizing:border-box; margin:0; padding:0; }
   html{ scroll-behavior:smooth; }
   body{
-    background:var(--ink);
+    min-height:100vh;
+    background:
+      radial-gradient(900px 520px at 50% -240px, #2B2520 0%, transparent 72%),
+      var(--ink);
     color:var(--bone);
     font-family:var(--sans);
     font-size:16px;
@@ -58,7 +61,7 @@
   a{ color:inherit; text-decoration:none; }
   :focus-visible{ outline:2px solid var(--bone); outline-offset:3px; border-radius:2px; }
 
-  .wrap{ max-width:920px; margin:0 auto; padding:0 24px; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 28px; }
 
   /* ---------- ambient light ----------
      A single wash behind everything that takes on the color of the app
@@ -66,8 +69,8 @@
      :has() list below. */
   .ambient{
     position:fixed; inset:0; z-index:-1; pointer-events:none;
-    background:radial-gradient(64% 46% at 50% 0%,
-      color-mix(in srgb, var(--ambient) 13%, transparent) 0%, transparent 72%);
+    background:radial-gradient(50% 54% at 78% 0%,
+      color-mix(in srgb, var(--ambient) 12%, transparent) 0%, transparent 72%);
     transition:background .55s ease;
   }
   @supports not (background: color-mix(in srgb, red 10%, blue)){
@@ -84,66 +87,91 @@
 
   /* ---------- header ---------- */
   .top{
-    display:flex; justify-content:flex-end; align-items:baseline;
-    padding:28px 0 0; gap:22px;
+    min-height:88px;
+    display:flex; justify-content:space-between; align-items:center;
+    border-bottom:1px solid var(--line);
+    gap:28px;
   }
   .top a{
     font-family:var(--mono); font-size:12px; letter-spacing:.08em;
     color:var(--mist);
   }
   .top a:hover{ color:var(--bone); }
+  .top .wordmark{
+    font-family:var(--serif); font-size:25px; font-weight:560;
+    font-style:italic; letter-spacing:-.02em; color:var(--bone);
+  }
+  .top nav{ display:flex; align-items:center; gap:24px; }
 
   /* ---------- hero ---------- */
-  .hero{ padding:96px 0 72px; }
+  .hero{ padding:72px 0 42px; }
   h1{
     font-family:var(--serif);
     font-weight:430;
-    font-size:clamp(42px, 8vw, 76px);
-    line-height:1.02;
-    letter-spacing:-0.015em;
-    max-width:14ch;
-  }
-  h1 em{ font-style:italic; font-weight:560; }
-  .hero p.lede{
-    margin-top:26px; max-width:52ch; color:var(--mist); font-size:17px;
+    font-size:clamp(54px, 9vw, 104px);
+    line-height:.88;
+    letter-spacing:-.045em;
   }
 
-  /* ---------- shelf ---------- */
-  .shelf-label{
-    display:flex; justify-content:space-between; align-items:baseline;
-    border-bottom:1px solid var(--line);
-    padding-bottom:12px;
-    font-family:var(--mono); font-size:12px; letter-spacing:.2em;
-    text-transform:uppercase; color:var(--mist);
+  /* ---------- app gallery ---------- */
+  .shelf{
+    list-style:none;
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:18px;
   }
-  .shelf{ list-style:none; }
   .row{
     position:relative;
-    display:grid;
-    grid-template-columns:64px 1fr auto;
-    gap:24px;
-    align-items:center;
-    padding:30px 12px;
-    border-bottom:1px solid var(--line);
-    border-radius:2px;
-    transition:background-color .25s ease;
+    min-height:320px;
+    display:flex; flex-direction:column; align-items:flex-start;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:24px;
+    overflow:hidden;
+    background:var(--card);
+    background:
+      linear-gradient(145deg,
+        color-mix(in srgb, var(--accent) 5%, var(--card)),
+        var(--card) 66%);
+    transition:
+      transform .28s ease,
+      border-color .28s ease,
+      background-color .28s ease;
+  }
+  .row::before{
+    content:"";
+    position:absolute; width:300px; height:300px; top:-190px; right:-120px;
+    border-radius:50%;
+    background:var(--accent);
+    opacity:.13;
+    filter:blur(44px);
+    pointer-events:none;
+    transition:opacity .28s ease, transform .35s ease;
+  }
+  .row > div{
+    position:relative; z-index:1;
+    width:100%; flex:1;
+    display:flex; flex-direction:column;
+    margin-top:42px;
   }
   @media (hover:hover){
-    .row:hover{ background:var(--card); }
-    .row:hover .go{ transform:translateX(4px); color:var(--accent); }
-    .row:hover .tile{ transform:scale(1.04); }
-    @supports (background: color-mix(in srgb, red 10%, blue)){
-      .row:hover{ background:color-mix(in srgb, var(--accent) 7%, var(--card)); }
+    .row:hover{
+      transform:translateY(-4px);
+      border-color:color-mix(in srgb, var(--accent) 45%, var(--line));
     }
+    .row:hover::before{ opacity:.24; transform:translate(-20px, 28px) scale(1.15); }
+    .row:hover .go{ transform:translate(3px, -3px); color:var(--accent); }
+    .row:hover .tile{ transform:scale(1.055); }
   }
 
   /* Superellipse, not a rounded rectangle. Same curve Apple uses for
      icons, so the artwork sits in the shape it was drawn for. */
   .tile{
     position:relative;
-    width:64px; height:64px;
+    z-index:1;
+    width:84px; height:84px;
     display:grid; place-items:center;
-    font-family:var(--serif); font-weight:560; font-size:26px;
+    font-family:var(--serif); font-weight:560; font-size:30px;
     color:var(--accent);
     background:
       radial-gradient(120% 120% at 20% 15%,
@@ -164,35 +192,29 @@
 
   .row h2{
     font-family:var(--serif); font-weight:430;
-    font-size:clamp(24px, 4vw, 34px);
+    font-size:clamp(30px, 4vw, 42px);
     line-height:1.05; letter-spacing:-0.01em;
   }
-  .row .desc{ margin-top:7px; color:var(--mist); max-width:46ch; font-size:15.5px; }
-  .row .meta{
-    margin-top:11px;
-    font-family:var(--mono); font-size:12px; letter-spacing:.06em;
-    color:var(--mist);
-    display:flex; flex-wrap:wrap; gap:6px 0; align-items:center;
+  .row .kind{
+    margin-bottom:8px;
+    font-family:var(--mono); font-size:11px; line-height:1.2;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--accent);
   }
-  .row .meta .sep{ padding:0 10px; color:var(--line); }
-  .row .meta a.store{
-    position:relative; z-index:2;            /* clickable above the stretched link */
-    color:var(--bone); border-bottom:1px solid var(--line);
-    padding-bottom:1px;
+  .row .desc{
+    margin-top:12px; color:var(--mist);
+    max-width:46ch; font-size:15.5px; line-height:1.55;
   }
-  .row .meta a.store:hover{ border-bottom-color:var(--accent); color:var(--accent); }
-  .row .meta .soon{ color:var(--mist); opacity:.75; }
-
   .row a.main::after{ content:""; position:absolute; inset:0; z-index:1; }
   .go{
-    font-size:22px; color:var(--mist);
+    position:absolute; z-index:2; top:32px; right:30px;
+    font-size:24px; line-height:1; color:var(--mist);
     transition:transform .25s ease, color .25s ease;
-    justify-self:end;
   }
 
   /* ---------- footer ---------- */
   footer{
-    padding:72px 0 56px;
+    margin-top:54px; padding:26px 0 52px;
+    border-top:1px solid var(--line);
     font-family:var(--mono); font-size:12px; letter-spacing:.06em;
     color:var(--mist);
     display:flex; flex-wrap:wrap; gap:10px 28px;
@@ -205,28 +227,34 @@
   @media (prefers-reduced-motion: no-preference){
     /* `backwards` fill, with the hidden state only inside the keyframe, so an
        animation that never plays leaves the content visible rather than blank. */
-    .hero > *, .shelf-label, .shelf li{
+    .top, .hero > *, .shelf li{
       animation:rise .6s ease backwards;
     }
-    h1{ animation-delay:.05s } .lede{ animation-delay:.14s }
-    .shelf-label{ animation-delay:.24s }
-    .shelf li:nth-child(1){ animation-delay:.3s }
-    .shelf li:nth-child(2){ animation-delay:.36s }
-    .shelf li:nth-child(3){ animation-delay:.42s }
-    .shelf li:nth-child(4){ animation-delay:.48s }
-    .shelf li:nth-child(5){ animation-delay:.54s }
-    .shelf li:nth-child(6){ animation-delay:.60s }
-    .shelf li:nth-child(7){ animation-delay:.66s }
-    .shelf li:nth-child(8){ animation-delay:.72s }
+    .top{ animation-delay:.02s }
+    h1{ animation-delay:.08s }
+    .shelf li:nth-child(1){ animation-delay:.16s }
+    .shelf li:nth-child(2){ animation-delay:.20s }
+    .shelf li:nth-child(3){ animation-delay:.24s }
+    .shelf li:nth-child(4){ animation-delay:.28s }
+    .shelf li:nth-child(5){ animation-delay:.32s }
+    .shelf li:nth-child(6){ animation-delay:.36s }
+    .shelf li:nth-child(7){ animation-delay:.40s }
+    .shelf li:nth-child(8){ animation-delay:.44s }
     @keyframes rise{ from{ opacity:0; transform:translateY(10px); } }
   }
 
   /* ---------- mobile ---------- */
-  @media (max-width:600px){
-    .row{ grid-template-columns:52px 1fr; gap:18px; padding:26px 6px; }
-    .tile{ width:52px; height:52px; font-size:22px; }
-    .go{ display:none; }
-    .hero{ padding:72px 0 56px; }
+  @media (max-width:760px){
+    .wrap{ padding:0 18px; }
+    .top{ min-height:74px; }
+    .top nav{ gap:16px; }
+    .top nav a:last-child{ display:none; }
+    .hero{ padding:54px 0 30px; }
+    .shelf{ grid-template-columns:1fr; gap:14px; }
+    .row{ min-height:300px; padding:24px; border-radius:20px; }
+    .row > div{ margin-top:34px; }
+    .tile{ width:74px; height:74px; font-size:27px; }
+    .go{ top:28px; right:26px; }
   }
 
   /* ---------- page transitions ----------
@@ -246,34 +274,26 @@
 <div class="wrap">
 
   <header class="top">
-    <a href="/support/">Support</a>
-    <a href="#contact">Contact</a>
+    <a class="wordmark" href="/" aria-label="Kstech home">Kstech</a>
+    <nav aria-label="Site navigation">
+      <a href="/support/">Support</a>
+      <a href="mailto:kstechnodev@gmail.com">Email</a>
+    </nav>
   </header>
 
+  <main>
   <section class="hero">
-    <h1><em>Kstech</em></h1>
-    <p class="lede">
-      Small, focused software. Eight apps so far, for iPhone, iPad and Mac.
-    </p>
+    <h1>App portfolio</h1>
   </section>
-
-  <div class="shelf-label">
-    <span>The apps</span>
-    <span>iOS · iPadOS · macOS</span>
-  </div>
 
   <ul class="shelf">
 
     <li class="row" style="--accent:#D89878"> <!-- spacesift.app dark --accent -->
       <span class="tile" style="view-transition-name:icon-spacesift" aria-hidden="true">S<img src="/spacesift/assets/app-icon.png" alt="" onerror="this.remove()"></span>
       <div>
+        <p class="kind">Photo utility</p>
         <a class="main" href="https://spacesift-website.pages.dev/"><h2>SpaceSift</h2></a>
         <p class="desc">Finds duplicates, similar shots, blurry photos, old screenshots and large videos. Everything is scanned on your device.</p>
-        <p class="meta">
-          <span>iPhone &amp; iPad</span><span class="sep">·</span>
-          <span>One-time purchase</span><span class="sep">·</span>
-          <a class="store" href="https://apps.apple.com/app/spacesift-photo-cleaner/id6760221975">App&nbsp;Store&nbsp;↗</a>
-        </p>
       </div>
       <span class="go" aria-hidden="true">→</span>
     </li>
@@ -281,13 +301,9 @@
     <li class="row" style="--accent:#3B82F6"> <!-- respirix.app --accent -->
       <span class="tile" style="view-transition-name:icon-respirix" aria-hidden="true">R<img src="/respirix/assets/app-icon.png" alt="" onerror="this.remove()"></span>
       <div>
+        <p class="kind">HRV biofeedback</p>
         <a class="main" href="https://respirix-website.pages.dev/"><h2>Respirix</h2></a>
         <p class="desc">Real-time HRV biofeedback and resonance breathing, using true RR-interval data from any Bluetooth chest strap.</p>
-        <p class="meta">
-          <span>iPhone</span><span class="sep">·</span>
-          <span>No subscription</span><span class="sep">·</span>
-          <a class="store" href="https://apps.apple.com/app/respirix/id6758206591">App&nbsp;Store&nbsp;↗</a>
-        </p>
       </div>
       <span class="go" aria-hidden="true">→</span>
     </li>
@@ -295,13 +311,9 @@
     <li class="row" style="--accent:#A78BFA"> <!-- promptuaryapp.com dark --accent -->
       <span class="tile" style="view-transition-name:icon-promptuary" aria-hidden="true">Pr<img src="/promptuary/assets/app-icon.png" alt="" onerror="this.remove()"></span>
       <div>
+        <p class="kind">Prompt library</p>
         <a class="main" href="https://promptuary-website.pages.dev/"><h2>Promptuary</h2></a>
         <p class="desc">Reusable AI prompts, fragments and chains, one shortcut away in the Mac menu bar and a tap away on iPhone and iPad.</p>
-        <p class="meta">
-          <span>Mac · iPhone &amp; iPad</span><span class="sep">·</span>
-          <span>Buy once</span><span class="sep">·</span>
-          <a class="store" href="https://apps.apple.com/app/promptuary/id6759801317">App&nbsp;Store&nbsp;↗</a>
-        </p>
       </div>
       <span class="go" aria-hidden="true">→</span>
     </li>
@@ -309,12 +321,9 @@
     <li class="row" style="--accent:#FF7A45"> <!-- rouseapp.pages.dev --sunrise -->
       <span class="tile" style="view-transition-name:icon-rouse" aria-hidden="true">R<img src="/assets/apps/rouse.png" alt="" onerror="this.remove()"></span>
       <div>
+        <p class="kind">Alarm</p>
         <a class="main" href="https://rouseapp.pages.dev/"><h2>Rouse</h2></a>
         <p class="desc">An iPhone alarm for heavy sleepers. Silence the sound if you need to, but the mission remains due.</p>
-        <p class="meta">
-          <span>iPhone</span><span class="sep">·</span>
-          <span>Subscription</span>
-        </p>
       </div>
       <span class="go" aria-hidden="true">→</span>
     </li>
@@ -322,12 +331,9 @@
     <li class="row" style="--accent:#C8925B"> <!-- lull-website.pages.dev; accent still to verify -->
       <span class="tile" style="view-transition-name:icon-lull" aria-hidden="true">L<img src="/assets/apps/lull.png" alt="" onerror="this.remove()"></span>
       <div>
+        <p class="kind">Sound &amp; sleep</p>
         <a class="main" href="https://lull-website.pages.dev/"><h2>Lull</h2></a>
         <p class="desc">White noise, nature sounds and ambient mixes that play all night. For sleep, babies, calm and focus.</p>
-        <p class="meta">
-          <span>iPhone</span><span class="sep">·</span>
-          <span>Free · $5.99 lifetime</span>
-        </p>
       </div>
       <span class="go" aria-hidden="true">→</span>
     </li>
@@ -335,13 +341,9 @@
     <li class="row" style="--accent:#7BFFB3"> <!-- skyhop-a7j.pages.dev --accent -->
       <span class="tile" style="view-transition-name:icon-skyhop" aria-hidden="true">S<img src="/assets/apps/skyhop.png" alt="" onerror="this.remove()"></span>
       <div>
+        <p class="kind">Arcade game</p>
         <a class="main" href="https://skyhop-a7j.pages.dev/"><h2>SkyHop</h2></a>
         <p class="desc">Steer Lumen through an endless climb, chain floor-skipping hops, collect boosters and take on the daily challenge.</p>
-        <p class="meta">
-          <span>iPhone &amp; iPad</span><span class="sep">·</span>
-          <span>Free · optional Remove Ads</span><span class="sep">·</span>
-          <a class="store" href="https://apps.apple.com/app/skyhop">App&nbsp;Store&nbsp;↗</a>
-        </p>
       </div>
       <span class="go" aria-hidden="true">→</span>
     </li>
@@ -349,13 +351,9 @@
     <li class="row" style="--accent:#4D94E8"> <!-- pacingguard.app dark --accent -->
       <span class="tile" style="view-transition-name:icon-pacingguard" aria-hidden="true">P<img src="/pacingguard/assets/app-icon.png" alt="" onerror="this.remove()"></span>
       <div>
+        <p class="kind">Activity pacing</p>
         <a class="main" href="https://pacingguard-website.pages.dev/"><h2>Pacing Guard</h2></a>
         <p class="desc">Timed GO and REST intervals with voice cues and heart-rate monitoring. Built for ME/CFS and Long COVID.</p>
-        <p class="meta">
-          <span>iPhone &amp; iPad</span><span class="sep">·</span>
-          <span>$1.99 once</span><span class="sep">·</span>
-          <a class="store" href="https://apps.apple.com/us/app/pacing-guard/id6757980383">App&nbsp;Store&nbsp;↗</a>
-        </p>
       </div>
       <span class="go" aria-hidden="true">→</span>
     </li>
@@ -363,17 +361,15 @@
     <li class="row" style="--accent:#E8674C"> <!-- attune-ev8.pages.dev --coral -->
       <span class="tile" style="view-transition-name:icon-attune" aria-hidden="true">A<img src="/assets/apps/attune.svg" alt="" onerror="this.remove()"></span>
       <div>
+        <p class="kind">Guided breathing</p>
         <a class="main" href="https://attune-ev8.pages.dev/"><h2>Attune</h2></a>
         <p class="desc">Paced breathing with live heart-rhythm feedback, designed for iPhone. Start with the pacer or connect a compatible monitor.</p>
-        <p class="meta">
-          <span>iPhone</span><span class="sep">·</span>
-          <span>Seven days included</span>
-        </p>
       </div>
       <span class="go" aria-hidden="true">→</span>
     </li>
 
   </ul>
+  </main>
 
   <footer id="contact">
     <span>© 2026 Kstech</span>
