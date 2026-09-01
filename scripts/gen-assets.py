@@ -85,9 +85,13 @@ def site_card(icon_sources, labels, w=1200, h=630):
     return f"""<!doctype html><meta charset="utf-8"><style>{FONTS}{BASE % {'w': w, 'h': h}}
   body{{--accent:#A78BFA;padding:82px 84px;display:flex;flex-direction:column;
         justify-content:space-between}}
-  h1{{font-family:'Fraunces',serif;font-weight:560;font-style:italic;font-size:116px;
-      line-height:1;letter-spacing:-.02em;position:relative}}
-  p{{font-size:32px;color:var(--mist);margin-top:22px;position:relative}}
+  .brand{{font-family:'Spline Sans Mono',monospace;font-size:18px;letter-spacing:.14em;
+      color:var(--mist);position:relative}}
+  h1{{font-family:'Fraunces',serif;font-weight:430;font-size:116px;
+      line-height:.9;letter-spacing:-.05em;position:relative;margin-top:22px;
+      display:flex;align-items:flex-start;gap:20px}}
+  h1 small{{font-family:'Spline Sans Mono',monospace;font-size:18px;font-weight:400;
+      letter-spacing:.14em;color:var(--mist);margin-top:24px}}
   .row{{display:flex;gap:26px;position:relative}}
   .row span{{width:104px;height:104px;background-size:cover;display:grid;place-items:center;
     -webkit-mask-image:url(data:image/svg+xml;base64,{SQUIRCLE});-webkit-mask-size:100% 100%;
@@ -95,7 +99,7 @@ def site_card(icon_sources, labels, w=1200, h=630):
   .row span.mono{{background:var(--card);color:#C8925B;font-family:'Fraunces',serif;
     font-size:44px}}
 </style><div class="glow"></div>
-<div><h1>Kstech</h1><p>Small, focused software for iPhone, iPad and Mac.</p></div>
+<div><p class="brand">Kstech</p><h1>Apps <small>08</small></h1></div>
 <div class="row">{tiles}</div>
 """
 
