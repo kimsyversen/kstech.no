@@ -87,11 +87,8 @@ def site_card(icon_sources, labels, w=1200, h=630):
         justify-content:space-between}}
   .brand{{font-family:'Spline Sans Mono',monospace;font-size:18px;letter-spacing:.14em;
       color:var(--mist);position:relative}}
-  h1{{font-family:'Fraunces',serif;font-weight:430;font-size:116px;
-      line-height:.9;letter-spacing:-.05em;position:relative;margin-top:22px;
-      display:flex;align-items:flex-start;gap:20px}}
-  h1 small{{font-family:'Spline Sans Mono',monospace;font-size:18px;font-weight:400;
-      letter-spacing:.14em;color:var(--mist);margin-top:24px}}
+  h1{{font-family:'Fraunces',serif;font-weight:430;font-size:98px;
+      line-height:.9;letter-spacing:-.045em;position:relative;margin-top:22px}}
   .row{{display:flex;gap:26px;position:relative}}
   .row span{{width:104px;height:104px;background-size:cover;display:grid;place-items:center;
     -webkit-mask-image:url(data:image/svg+xml;base64,{SQUIRCLE});-webkit-mask-size:100% 100%;
@@ -99,7 +96,7 @@ def site_card(icon_sources, labels, w=1200, h=630):
   .row span.mono{{background:var(--card);color:#C8925B;font-family:'Fraunces',serif;
     font-size:44px}}
 </style><div class="glow"></div>
-<div><p class="brand">Kstech</p><h1>Apps <small>08</small></h1></div>
+<div><p class="brand">Kstech</p><h1>App portfolio</h1></div>
 <div class="row">{tiles}</div>
 """
 

@@ -108,15 +108,9 @@
   h1{
     font-family:var(--serif);
     font-weight:430;
-    font-size:clamp(64px, 11vw, 126px);
+    font-size:clamp(54px, 9vw, 104px);
     line-height:.88;
-    letter-spacing:-.05em;
-    display:flex; align-items:flex-start; gap:18px;
-  }
-  h1 .count{
-    margin-top:.35em;
-    font-family:var(--mono); font-size:12px; font-weight:400;
-    line-height:1; letter-spacing:.12em; color:var(--mist);
+    letter-spacing:-.045em;
   }
 
   /* ---------- app gallery ---------- */
@@ -128,7 +122,7 @@
   }
   .row{
     position:relative;
-    min-height:360px;
+    min-height:320px;
     display:flex; flex-direction:column; align-items:flex-start;
     padding:28px;
     border:1px solid var(--line);
@@ -210,23 +204,6 @@
     margin-top:12px; color:var(--mist);
     max-width:46ch; font-size:15.5px; line-height:1.55;
   }
-  .row .meta{
-    width:100%;
-    margin-top:auto; padding-top:24px;
-    border-top:1px solid var(--line);
-    font-family:var(--mono); font-size:12px; letter-spacing:.06em;
-    color:var(--mist);
-    display:flex; flex-wrap:wrap; gap:6px 0; align-items:center;
-  }
-  .row .meta .sep{ padding:0 10px; color:var(--line); }
-  .row .meta a.store{
-    position:relative; z-index:2;            /* clickable above the stretched link */
-    color:var(--bone); border-bottom:1px solid var(--line);
-    padding-bottom:1px;
-  }
-  .row .meta a.store:hover{ border-bottom-color:var(--accent); color:var(--accent); }
-  .row .meta .soon{ color:var(--mist); opacity:.75; }
-
   .row a.main::after{ content:""; position:absolute; inset:0; z-index:1; }
   .go{
     position:absolute; z-index:2; top:32px; right:30px;
@@ -274,7 +251,7 @@
     .top nav a:last-child{ display:none; }
     .hero{ padding:54px 0 30px; }
     .shelf{ grid-template-columns:1fr; gap:14px; }
-    .row{ min-height:330px; padding:24px; border-radius:20px; }
+    .row{ min-height:300px; padding:24px; border-radius:20px; }
     .row > div{ margin-top:34px; }
     .tile{ width:74px; height:74px; font-size:27px; }
     .go{ top:28px; right:26px; }
@@ -306,7 +283,7 @@
 
   <main>
   <section class="hero">
-    <h1>Apps <span class="count" aria-label="8 apps">08</span></h1>
+    <h1>App portfolio</h1>
   </section>
 
   <ul class="shelf">
@@ -317,11 +294,6 @@
         <p class="kind">Photo utility</p>
         <a class="main" href="https://spacesift-website.pages.dev/"><h2>SpaceSift</h2></a>
         <p class="desc">Finds duplicates, similar shots, blurry photos, old screenshots and large videos. Everything is scanned on your device.</p>
-        <p class="meta">
-          <span>iPhone &amp; iPad</span><span class="sep">·</span>
-          <span>One-time purchase</span><span class="sep">·</span>
-          <a class="store" href="https://apps.apple.com/app/spacesift-photo-cleaner/id6760221975">App&nbsp;Store&nbsp;↗</a>
-        </p>
       </div>
       <span class="go" aria-hidden="true">→</span>
     </li>
@@ -332,11 +304,6 @@
         <p class="kind">HRV biofeedback</p>
         <a class="main" href="https://respirix-website.pages.dev/"><h2>Respirix</h2></a>
         <p class="desc">Real-time HRV biofeedback and resonance breathing, using true RR-interval data from any Bluetooth chest strap.</p>
-        <p class="meta">
-          <span>iPhone</span><span class="sep">·</span>
-          <span>No subscription</span><span class="sep">·</span>
-          <a class="store" href="https://apps.apple.com/app/respirix/id6758206591">App&nbsp;Store&nbsp;↗</a>
-        </p>
       </div>
       <span class="go" aria-hidden="true">→</span>
     </li>
@@ -347,11 +314,6 @@
         <p class="kind">Prompt library</p>
         <a class="main" href="https://promptuary-website.pages.dev/"><h2>Promptuary</h2></a>
         <p class="desc">Reusable AI prompts, fragments and chains, one shortcut away in the Mac menu bar and a tap away on iPhone and iPad.</p>
-        <p class="meta">
-          <span>Mac · iPhone &amp; iPad</span><span class="sep">·</span>
-          <span>Buy once</span><span class="sep">·</span>
-          <a class="store" href="https://apps.apple.com/app/promptuary/id6759801317">App&nbsp;Store&nbsp;↗</a>
-        </p>
       </div>
       <span class="go" aria-hidden="true">→</span>
     </li>
@@ -362,10 +324,6 @@
         <p class="kind">Alarm</p>
         <a class="main" href="https://rouseapp.pages.dev/"><h2>Rouse</h2></a>
         <p class="desc">An iPhone alarm for heavy sleepers. Silence the sound if you need to, but the mission remains due.</p>
-        <p class="meta">
-          <span>iPhone</span><span class="sep">·</span>
-          <span>Subscription</span>
-        </p>
       </div>
       <span class="go" aria-hidden="true">→</span>
     </li>
@@ -376,10 +334,6 @@
         <p class="kind">Sound &amp; sleep</p>
         <a class="main" href="https://lull-website.pages.dev/"><h2>Lull</h2></a>
         <p class="desc">White noise, nature sounds and ambient mixes that play all night. For sleep, babies, calm and focus.</p>
-        <p class="meta">
-          <span>iPhone</span><span class="sep">·</span>
-          <span>Free · $5.99 lifetime</span>
-        </p>
       </div>
       <span class="go" aria-hidden="true">→</span>
     </li>
@@ -390,11 +344,6 @@
         <p class="kind">Arcade game</p>
         <a class="main" href="https://skyhop-a7j.pages.dev/"><h2>SkyHop</h2></a>
         <p class="desc">Steer Lumen through an endless climb, chain floor-skipping hops, collect boosters and take on the daily challenge.</p>
-        <p class="meta">
-          <span>iPhone &amp; iPad</span><span class="sep">·</span>
-          <span>Free · optional Remove Ads</span><span class="sep">·</span>
-          <a class="store" href="https://apps.apple.com/app/skyhop">App&nbsp;Store&nbsp;↗</a>
-        </p>
       </div>
       <span class="go" aria-hidden="true">→</span>
     </li>
@@ -405,11 +354,6 @@
         <p class="kind">Activity pacing</p>
         <a class="main" href="https://pacingguard-website.pages.dev/"><h2>Pacing Guard</h2></a>
         <p class="desc">Timed GO and REST intervals with voice cues and heart-rate monitoring. Built for ME/CFS and Long COVID.</p>
-        <p class="meta">
-          <span>iPhone &amp; iPad</span><span class="sep">·</span>
-          <span>$1.99 once</span><span class="sep">·</span>
-          <a class="store" href="https://apps.apple.com/us/app/pacing-guard/id6757980383">App&nbsp;Store&nbsp;↗</a>
-        </p>
       </div>
       <span class="go" aria-hidden="true">→</span>
     </li>
@@ -420,10 +364,6 @@
         <p class="kind">Guided breathing</p>
         <a class="main" href="https://attune-ev8.pages.dev/"><h2>Attune</h2></a>
         <p class="desc">Paced breathing with live heart-rhythm feedback, designed for iPhone. Start with the pacer or connect a compatible monitor.</p>
-        <p class="meta">
-          <span>iPhone</span><span class="sep">·</span>
-          <span>Seven days included</span>
-        </p>
       </div>
       <span class="go" aria-hidden="true">→</span>
     </li>
